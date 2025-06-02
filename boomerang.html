@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Paul L. R. OLIVIER</title>
+    <title>Boomerang - Paul L. R. OLIVIER</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -24,30 +24,17 @@
         <div class="page-content">
         <div class="wrapper">
 
-        <h2>Projects</h2>
+        <h2><a href="https://github.com/rawsample/boomerang">Boomerang</a></h2>
 
         <p>
-        Projects and tools I happens to maintain or create:
+        This project was born from a desire to practice Rust and refine concepts I first explored with Chestburster during my thesis.
+        The key ideas remain similar: intercept and instrument system calls, forward memory accesses, and migrate processes between different hosts.
+        Indeed, embedded systems differ greatly from one another.
+        I've found that the conditions for analysis can vary widely across these environments, prompting questions like: Can I recompile and flash a modified kernel? Can I compile and load a kernel module? Are ptrace syscalls enabled? Do I want to use an emulator?
+        Therefore, I prefer to let the analyst decide how the interception should happen and use the library accordingly.
+        My aim is to provide building blocks for writing dynamic analysis tools (debuggers, fuzzers, etc.) tailored for specific analyses.
+        This is still a work in progress.
         </p>
-
-        <ul>
-            <li>
-                <a href="avatar2.html">avatar&sup2;</a>: A framework for reversing and analysing embedded firmware.
-                <!--
-                <a href="https://github.com/avatartwo/avatar2">avatar&sup2;</a>: A framework for reversing and analysing embedded firmware.
-                -->
-            </li>
-            <li>
-                <a href="sirocco.html">Sirocco</a>: A Bluetooth Low Energy (BLE) Intrusion Detection System (IDS) on <a href="https://zephyrproject.org">Zephyr RTOS</a> designed to detect low-level radio attacks.
-            </li>
-            <li>
-                <a href="boomerang.html">Boomerang</a>: A Rust library that facilitates Linux system call instrumentation.
-            </li>
-            <li>
-                <!--<a href="chestburster.html">Chestburster</a>: A tool for rehosting running Linux process between different kernels, such as moving a process from a physical device to an emulator.-->
-                Chestburster: A tool for rehosting running Linux process between different kernels, such as moving a process from a physical device to an emulator.
-            </li>
-        </ul>
 
         </div>
         </div>

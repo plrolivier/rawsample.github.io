@@ -20,7 +20,8 @@
 
 /* Base variables converted to CSS */
 :root {
-    --base-font-family: Charter, Georgia, Helvetica, Arial, sans-serif;
+    /*--base-font-family: Charter, Georgia, Helvetica, Arial, sans-serif; */
+    --base-font-family: Arial, Helvetica, Georgia, sans-serif;
     --base-font-size: 14px;
     --small-font-size: calc(var(--base-font-size) * 0.875);
     --base-line-height: 1.7;

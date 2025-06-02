@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>avatar&sup2; - Paul L. R. OLIVIER</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="wrapper">
+            <a class="site-title" href="index.html">Paul L. R. OLIVIER</a>
+            <nav class="site-nav">
+                <div class="menu">
+                    <a class="page-link" href="index.html">Home</a>
+                    <a class="page-link" href="research.html">Research</a>
+                    <a class="page-link" href="projects.html">Projects</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-content">
+        <div class="wrapper">
+
+        <h2><a href="https://github.com/avatartwo">Avatar&sup2;</a></h2>
+
+        <img class="normal-pic" src="content/img/avatar_logo.png" alt="avatar logo">
+
+        <p>
+        Avatar&sup2; is an open-source framework designed for reversing and analyzing embedded firmware.
+        It focuses on facilitating the integration and interoperability between various binary analysis tools such as debuggers, emulators, disassemblers, symbolic execution engines, and fuzzers.
+        It is the worthy successor of <a href="https://www.s3.eurecom.fr/tools/avatar/">AVATAR</a>, first of its name.
+        The project lives on <a href="https://github.com/avatartwo">GitHub</a>.
+        </p>
+
+        <p>
+        My PhD thesis topic was closely tied to the avatar&sup2; project where I have been a maintainer since 2019.
+        My contributions include integrating new features such as the connection with the Inception debugger, managing issues and pull requests, writing unit tests and developing Continuous Integration (CI) pipelines.
+        I have also led the annual release of our QEMU fork, which involves porting our commits to new QEMU versions and resolving resulting issues.
+        Additionally, I have participated in promoting the project through presentations at various events (e.g., <a href="https://23.thcon.fr/program/">THCon</a>, <a href="https://www.imt.fr/wp-content/uploads/2022/04/Booklet_posters_mars2022.pdf">IMT Conference</a>).
+        More recently, our work was recognized as a finalist for <a href="https://www.acsac.org/2024/program/artifacts_competition/">ACSAC's Artifacts Competition and Impact Award</a> in 2024.
+        As highlighted, the project has 550 stars and more than 100 forks on GitHub, has been cited 192 times according to Google Scholar, and has been the the foundation for several influential extensions and research projects.
+        </p>
+
+        <p>
+        While initially designed to study monolithic firmware, I expanded avatar&sup2; capabilities to support Linux-based embedded systems through system call interception.
+        <!-- with more details provided in <a href="chestburster.html">Chestburster</a>. -->
+         Indeed, the Linux system call interface's recognized stability makes it a strong candidate for decoupling an application, enabling the separation of components targeted for study (often in an emulator) from its more hardware-dependent parts.
+         This led to new challenges related to synchronizing the processes and their kernel states between the emulator and the device.
+         This work was at the heart of my thesis Chestburster.
+        </p>
+
+        </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrapper">
+            <div class="footer-col-wrapper">
+                <h4>CONTACT</h4>
+                <div class="footer-col footer-col-1 social-links">
+                    <img src="content/img/email.png" alt="email">
+
+                    <a href="mailto:olivier.paul.lr@gmail.com">olivier.paul.lr@gmail.com</a>
+                    <br>
+                    <img src="content/img/linkedin.png" alt="linkedin">
+                    
+                    <a href="https://www.linkedin.com/in/plrolivier">plrolivier</a>
+                </div>
+                <div class="footer-col footer-col-2 social-links">
+                    <img src="content/img/twitter.png" alt="twitter">
+                    
+                    <a href="https://twitter.com/_sampl">@_sampl</a>
+                    <br>
+                    <img src="content/img/github.png" alt="github">
+                    
+                    <a href="https://github.com/plrolivier">plrolivier</a>
+                </div>
+                <div class="footer-col footer-col-3 inspired-by">
+                    &copy; 2024 Paul L. R. OLIVIER 
+                    <br>
+                    Inspired by <a href="https://github.com/eliottvincent/bay">Bay</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>

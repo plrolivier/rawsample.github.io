@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sirocco - Paul L. R. OLIVIER</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="wrapper">
+            <a class="site-title" href="index.html">Paul L. R. OLIVIER</a>
+            <nav class="site-nav">
+                <div class="menu">
+                    <a class="page-link" href="index.html">Home</a>
+                    <a class="page-link" href="research.html">Research</a>
+                    <a class="page-link" href="projects.html">Projects</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-content">
+        <div class="wrapper">
+
+        <h2><a href="https://github.com/plrolivier/sirocco">Sirocco</a></h2>
+
+        <p>
+        Sirocco is a flexible and lightweight intrusion detection framework for Bluetooth Low Energy (BLE), built upon the <a href="https://zephyrproject.org">Zephyr RTOS</a>.
+        It targets sophisticated and low-level attacks such as spoofing, signal injection, and key sharing vulnerabilities.
+        Addressing the unique challenges of both central and peripheral BLE device roles, Sirocco offers a robust defense mechanism with minimal performance impact.
+        </p>
+
+        <p>
+        During my postdoctoral research, a key technical objective was to improve the stability and performance of an existing BLE IDS prototype, <i>OASIS</i>.
+        Initial investigations into OASIS revealed a performance bottleneck: the system's detection algorithms were being executed directly within the ISR context.
+        This approach led to excessive CPU time spent in ISRs.
+        As a result, the strict timing constraints mandated by the BLE standard were violated.
+        Therefore, the system suffered from instability, often leading to dropped BLE connections, especially when multiple detection modules were active or under attack.
+        </p>
+
+        <p>
+        To address these issues, I redesigned the system's architecture.
+        <ul>
+            <li>
+                <strong>Focus on an open-source BLE stack:</strong>
+                I chose to base the work on the Zephyr RTOS BLE stack because it gave me great insight about how BLE packets are processed and which low-level and radio metrics are important for the detection algorithms.
+                Moreover, the source-based approach is enable a tighter integration of the framework with the kernel components and offer to application developers..
+            </li>
+            <li>
+                <strong>Decouple the detection from ISRs:</strong>
+                I moved the computationally intensive detection algorithms out of the ISR context and into its dedicated kernel thread.
+                Metric collection, requiring immediate data capture during packet transmission and reception, remained within the ISR but was streamlined to be lightweight.
+            </li>
+            <li>
+                <strong>Design an efficient inter-thread communication:</strong>
+                A FIFO queue, based on a ring buffer, was utilized to promptly transfer the collected data to the detection thread.
+                Moreover, a custom memory allocator optimized for allocation speed in the ISR by deferring memory management operations to the less time-critical kernel thread.
+            </li>
+            <li>
+                <strong>Reimplement the modular design for algorithm detection:</strong>
+                The detection modules are reimplemented from OASIS.
+                This allows flexibility to tailor detection modules to the device roles (central and/or peripheral) and the evolving landscape of BLE attacks.
+            </li>
+            <li>
+                <strong>Add a response mechanism:</strong>
+                Although Sirocco focuses on attack detection, it provides a callback mechanism when an alert is raised.
+                This allows the developer to adapt their application's behavior.
+                For instance, one could terminate a connection upon detecting a MITM attack, or during a spoofing attack on a peripheral, broadcast advertisements to nearby devices to signal an attack is underway.
+            </li>
+
+        </ul>
+
+        <p>
+        <img src="content/img/sirocco_architecture.png" alt="sirocco architecture diagram">
+        <i>Figure: Sirocco architecture diagram. The Zephyr RTOS BLE stack architecture is shown in blue, and the Sirocco components in orange.</i>
+        </p>
+
+        <p>
+        Performance analysis revealed a reasonable latency overhead, with measured end-to-end latencies averaging between 9 and 47 μs.
+        Although the ISR latency increased, the worst-case execution times stayed well within BLE specification limits (150 μs).
+        The framework added a modest 5-6KB to flash memory usage, with most detection modules having minimal footprints.
+        RAM usage is chiefly determined by configurable FIFO buffer sizes.
+        Power consumption showed minimal increases in most scenarios ranging from 0.05% to 0.44%.
+        In controlled experiments, Sirocco achieved high detection rates and no false positives for attacks like BTLEJuice, KNOB, and GATTacker, with a very low false positive rate for BTLEJack.
+        </p>
+
+        <p>
+        The source code is available on <a href="https://github.com/plrolivier/sirocco">GitHub</a>, along with <a href="https://github.com/plrolivier/sirocco-examples">application examples</a> demonstrating its usage.
+        </p>
+
+        </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="wrapper">
+            <div class="footer-col-wrapper">
+                <h4>CONTACT</h4>
+                <div class="footer-col footer-col-1 social-links">
+                    <img src="content/img/email.png" alt="email">
+
+                    <a href="mailto:olivier.paul.lr@gmail.com">olivier.paul.lr@gmail.com</a>
+                    <br>
+                    <img src="content/img/linkedin.png" alt="linkedin">
+                    
+                    <a href="https://www.linkedin.com/in/plrolivier">plrolivier</a>
+                </div>
+                <div class="footer-col footer-col-2 social-links">
+                    <img src="content/img/twitter.png" alt="twitter">
+                    
+                    <a href="https://twitter.com/_sampl">@_sampl</a>
+                    <br>
+                    <img src="content/img/github.png" alt="github">
+                    
+                    <a href="https://github.com/plrolivier">plrolivier</a>
+                </div>
+                <div class="footer-col footer-col-3 inspired-by">
+                    &copy; 2024 Paul L. R. OLIVIER 
+                    <br>
+                    Inspired by <a href="https://github.com/eliottvincent/bay">Bay</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>
